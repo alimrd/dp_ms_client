@@ -1,0 +1,21 @@
+{
+  "name": "tatdev/dp_ms_client",
+  "description": "DigiPeyk MessagingService Client SDK",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ali Moradi",
+      "email": "moradi-ali@outlook.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "tatdev\\DPMSClient\\": "src/"
+    }
+  }
+}
