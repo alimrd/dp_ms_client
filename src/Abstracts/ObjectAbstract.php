@@ -5,6 +5,9 @@ namespace Tatdev\DPMSClient\Abstracts;
 use Tatdev\DPMSClient\Exceptions\PropertiesIsIncompleteException;
 use Tatdev\DPMSClient\Objects\OrderObject;
 use Tatdev\DPMSClient\Objects\SenderObject;
+use Tatdev\DPMSClient\Objects\SentEmailObject;
+use Tatdev\DPMSClient\Objects\SentSmsObject;
+use Tatdev\DPMSClient\Objects\TemplateObject;
 use Tatdev\DPMSClient\Objects\TimeObject;
 use Tatdev\DPMSClient\Objects\TimezoneObject;
 
@@ -41,8 +44,17 @@ abstract class ObjectAbstract
                         case 'sender':
                             $this->$key = SenderObject::fromArray($attributes[$key]);
                             break;
+                        case 'sent_email':
+                            $this->$key = SentEmailObject::fromArray($attributes[$key]);
+                            break;
+                        case 'sent_sms':
+                            $this->$key = SentSmsObject::fromArray($attributes[$key]);
+                            break;
                         case 'time':
                             $this->$key = TimeObject::fromArray($attributes[$key]);
+                            break;
+                        case 'template':
+                            $this->$key = TemplateObject::fromArray($attributes[$key]);
                             break;
                         case 'timezone':
                             $this->$key = TimezoneObject::fromArray($attributes[$key]);

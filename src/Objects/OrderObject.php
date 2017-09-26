@@ -9,7 +9,8 @@ use Tatdev\DPMSClient\Abstracts\ObjectAbstract;
  * @property SenderObject $sender
  * @property string $type
  * @property TimeObject $created_time
- * @property TimeObject $stopped_time
+ * @property TimeObject|null $due_time
+ * @property TimeObject|null $stopped_time
  * @property int $retry_count
  * @property int $status_wait_time
  * @property int $status_try_count
@@ -39,9 +40,13 @@ class OrderObject extends ObjectAbstract
             'type' => 'time',
             'nullable' => false
         ],
+        'due_time' => [
+            'type' => 'time',
+            'nullable' => true
+        ],
         'stopped_time' => [
             'type' => 'time',
-            'nullable' => false
+            'nullable' => true
         ],
         'retry_count' => [
             'type' => 'int',

@@ -6,7 +6,7 @@ namespace Tatdev\DPMSClient\Interfaces;
  * Interface iSmsHandler
  * @package Tatdev\DPMSClient\Interfaces
  */
-interface iSmsHandler
+interface iHandler
 {
     /**
      * @param int $sender

@@ -6,36 +6,31 @@ use Tatdev\DPMSClient\Abstracts\ObjectAbstract;
 
 /**
  * @property int $id
+ * @property string|null $name
+ * @property string $text_html
  * @property string $type
- * @property string $value
- * @property string $provider
- * @property string|null $description
  *
- * Class SenderObject
+ * Class TemplateObject
  * @package Tatdev\DPMSClient\Objects
  */
-class SenderObject extends ObjectAbstract
+class TemplateObject extends ObjectAbstract
 {
     protected $properties = [
         'id' => [
             'type' => 'int',
             'nullable' => false
         ],
+        'name' => [
+            'type' => 'string',
+            'nullable' => true
+        ],
+        'text_html' => [
+            'type' => 'string',
+            'nullable' => false
+        ],
         'type' => [
             'type' => 'string',
             'nullable' => false
-        ],
-        'value' => [
-            'type' => 'string',
-            'nullable' => false
-        ],
-        'provider' => [
-            'type' => 'string',
-            'nullable' => false
-        ],
-        'description' => [
-            'type' => 'string',
-            'nullable' => true
         ]
     ];
 }

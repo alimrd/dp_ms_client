@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "05407554d020997f020b29570c9c5d4d",
-    "content-hash": "5a02d6ed54f41ffc39f0a91f1a439194",
+    "hash": "ef261556a7a94baa4f4308c2ee231778",
+    "content-hash": "1ff10b252e4b856cf7a72c3779e39fe0",
     "packages": [
         {
             "name": "makbari/curl-http-client",
-            "version": "0.1",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/majidakbari/CurlHttpClient.git",
-                "reference": "b62eb4517a5184c16c3aeccba31dafe8664b7b32"
+                "reference": "49fd170ac6f17e14a88c8cd41a336c99dfaffe9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/majidakbari/CurlHttpClient/zipball/b62eb4517a5184c16c3aeccba31dafe8664b7b32",
-                "reference": "b62eb4517a5184c16c3aeccba31dafe8664b7b32",
+                "url": "https://api.github.com/repos/majidakbari/CurlHttpClient/zipball/49fd170ac6f17e14a88c8cd41a336c99dfaffe9c",
+                "reference": "49fd170ac6f17e14a88c8cd41a336c99dfaffe9c",
                 "shasum": ""
             },
             "require": {
@@ -43,7 +43,7 @@
                 }
             ],
             "description": "Http client based on curl",
-            "time": "2017-09-24 07:46:13"
+            "time": "2017-09-26 13:57:17"
         },
         {
             "name": "mhndev/php-std",
