@@ -10,15 +10,15 @@ php composer.phar require tatdev/dp-ms-client
 ```
 
 ### Usage
-with this package you can work with following methods of digipeyk messaging service:
-* `sendMessage` send sms with same body to multiple receptors
-* `sendMessageMultiple` send sms with multiple body to multiple receptors
-* `sendEmail` send email with same body to multiple receptors
-* `sendEmailMultiple` send email with multiple body to multiple receptors
+By using this package you can work with the following methods of digipeyk messaging service:
+* `sendMessage` − send sms with same body to multiple receptors
+* `sendMessageMultiple` − send sms with multiple body to multiple receptors
+* `sendEmail` − send email with same body to multiple receptors
+* `sendEmailMultiple` − send email with multiple body to multiple receptors
 
 ### Example
 
-#### `sendMessage`
+#### sendMessage
 ```php
 use \Tatdev\DPMSClient\Clients\Client;
 use \Tatdev\DPMSClient\HttpClients\CurlHttpClient;
@@ -42,7 +42,7 @@ $order = $client->sendSms(
 );
 ```
 
-#### `sendMessageMultiple`
+#### sendMessageMultiple
 ```php
 use \Tatdev\DPMSClient\Clients\Client;
 use \Tatdev\DPMSClient\HttpClients\CurlHttpClient;
@@ -71,7 +71,7 @@ $order = $client->sendSmsMultiple(
 );
 ```
 
-#### `sendEmail`
+#### sendEmail
 ```php
 use \Tatdev\DPMSClient\Clients\Client;
 use \Tatdev\DPMSClient\HttpClients\CurlHttpClient;
@@ -98,7 +98,7 @@ $order = $client->sendEmail(
 );
 ```
 
-#### `sendEmailMultiple`
+#### sendEmailMultiple
 ```php
 use \Tatdev\DPMSClient\Clients\Client;
 use \Tatdev\DPMSClient\HttpClients\CurlHttpClient;
