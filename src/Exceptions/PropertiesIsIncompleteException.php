@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: moradi
- * Date: 9/24/17
- * Time: 3:26 PM
- */
 
 namespace Tatdev\DPMSClient\Exceptions;
 

@@ -2,9 +2,8 @@
 
 namespace Tatdev\DPMSClient\Traits;
 
-use makbari\httpClient\exception\ClientException;
-use makbari\httpClient\interfaces\iHttpClient;
 use Tatdev\DPMSClient\Exceptions\HttpException;
+use Tatdev\DPMSClient\Interfaces\iHttpClient;
 
 /**
  * Trait SmsHandler
@@ -26,18 +25,38 @@ trait SmsHandler
      */
     public function sendSms(array $data)
     {
-        try {
-            $response = $this->httpClient->sendRequest(
-                'POST',
-                $this->prefixUrl . '/orders/sms',
-                json_encode($data),
-                $this->headers
-            );
-        } catch (ClientException $exception) {
-            throw new HttpException($exception->getMessage());
-        } catch (\Exception $exception) {
-            throw $exception;
-        }
-        return json_decode($response->getBody(), true);
+        $response = $this->httpClient->sendRequestJson(
+            'POST',
+            $this->prefixUrl . '/orders/sms',
+            $data,
+            array_merge($this->headers)
+        );
+        if (!isset($response['status']))
+            throw new HttpException('Wrong response from messaging service');
+        if ($response['status']['code'] > 300)
+            throw new HttpException($response['status']['message']);
+        return $response['result'];
+    }
+
+    /**
+     * @param array $data
+     * @return array
+     *
+     * @throws HttpException
+     * @throws \Exception
+     */
+    public function sendSmsMultiple(array $data)
+    {
+        $response = $this->httpClient->sendRequestJson(
+            'POST',
+            $this->prefixUrl . '/orders/sms/multiple',
+            $data,
+            array_merge($this->headers)
+        );
+        if (!isset($response['status']))
+            throw new HttpException('Wrong response from messaging service');
+        if ($response['status']['code'] > 300)
+            throw new HttpException($response['status']['message']);
+        return $response['result'];
     }
 }

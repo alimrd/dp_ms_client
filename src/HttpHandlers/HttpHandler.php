@@ -2,7 +2,7 @@
 
 namespace Tatdev\DPMSClient\HttpHandlers;
 
-use makbari\httpClient\interfaces\iHttpClient;
+use Tatdev\DPMSClient\Interfaces\iHttpClient;
 use Tatdev\DPMSClient\Traits\SmsHandler;
 
 /**
@@ -19,8 +19,8 @@ class HttpHandler
     private $httpClient;
     private $prefixUrl;
     private $headers = [
-        'Accept' => 'application/json',
-        'Accept-Language' => 'fa'
+        'Accept: application/json',
+        'Accept-Language: fa'
     ];
 
     /**

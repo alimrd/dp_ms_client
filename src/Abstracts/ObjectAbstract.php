@@ -86,9 +86,17 @@ abstract class ObjectAbstract
         $array = array();
         foreach ($this->properties as $key => $property)
             if (is_object($this->properties[$key]))
-                $array[$key] = $this->properties[$key]->toArray();
+                $array[$key] = $this->$key->toArray();
             else
-                $array[$key] = $this->properties[$key];
+                $array[$key] = $this->$key;
         return $array;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return json_encode($this->toArray());
     }
 }
