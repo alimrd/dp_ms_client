@@ -8,8 +8,8 @@ namespace Tatdev\DPMSClient\SendObjects;
  */
 class Value
 {
-    private $key;
-    private $value;
+    public $key;
+    public $value;
 
     /**
      * Value constructor.

@@ -3,6 +3,7 @@
 namespace Tatdev\DPMSClient\HttpHandlers;
 
 use Tatdev\DPMSClient\Interfaces\iHttpClient;
+use Tatdev\DPMSClient\Traits\EmailHandler;
 use Tatdev\DPMSClient\Traits\SmsHandler;
 
 /**
@@ -35,4 +36,5 @@ class HttpHandler
     }
 
     use SmsHandler;
+    use EmailHandler;
 }

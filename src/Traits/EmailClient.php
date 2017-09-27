@@ -5,26 +5,29 @@ namespace Tatdev\DPMSClient\Traits;
 use Tatdev\DPMSClient\Exceptions\ParametersIsIncompleteException;
 use Tatdev\DPMSClient\HttpHandlers\HttpHandler;
 use Tatdev\DPMSClient\Objects\OrderObject;
-use Tatdev\DPMSClient\SendObjects\SingleMessage;
+use Tatdev\DPMSClient\SendObjects\SingleEmail;
 use Tatdev\DPMSClient\SendObjects\Value;
 
 /**
- * Trait SmsClient
+ * Trait EmailClient
  *
  * @property HttpHandler $httpHandler
  *
  * @package Tatdev\DPMSClient\Traits
  */
-trait SmsClient
+trait EmailClient
 {
     /**
-     * send sms with same body to multiple receptors
+     * send email with same body to multiple receptors
      *
      * @param int $sender
+     * @param array $receptors
+     * @param string $subject
      * @param string|null $body
      * @param int|null $template
      * @param Value[] $values
-     * @param array $receptors
+     * @param array $cc
+     * @param array $bcc
      * @param int $accept_latency
      * @param int $retry_count
      * @param int $status_wait_time
@@ -37,12 +40,15 @@ trait SmsClient
      *
      * @throws ParametersIsIncompleteException
      */
-    public function sendSms(
+    public function sendEmail(
         int $sender,
         array $receptors,
+        string $subject,
         string $body = null,
         int $template = null,
         array $values = [],
+        array $cc = [],
+        array $bcc = [],
         int $accept_latency = 24 * 60 * 60,
         int $retry_count = 3,
         int $status_wait_time = 60,
@@ -53,14 +59,17 @@ trait SmsClient
     )
     {
         if (is_null($body) && is_null($template))
-            throw new ParametersIsIncompleteException('sms must be have body or template');
+            throw new ParametersIsIncompleteException('email must be have body or template');
         if ($j_due_date && is_null($j_date_format))
             throw new ParametersIsIncompleteException('due date must be have date format');
         $data = [
             'sender' => $sender,
+            'subject' => $subject,
             'body' => $body,
             'template' => $template,
             'values' => $values,
+            'cc' => $cc,
+            'bcc' => $bcc,
             'receptors' => $receptors,
             'accept_latency' => $accept_latency,
             'retry_count' => $retry_count,
@@ -70,17 +79,17 @@ trait SmsClient
             'j_due_date' => $j_due_date
         ];
         $data = $this->filter($data);
-        $order = OrderObject::fromArray($this->httpHandler->sendSms($data));
+        $order = OrderObject::fromArray($this->httpHandler->sendEmail($data));
         if ($return_array)
             return $order->toArray();
         return $order;
     }
 
     /**
-     * send sms with multiple body to multiple receptors
+     * send email with multiple body to multiple receptors
      *
      * @param int $sender
-     * @param SingleMessage[] $messages
+     * @param SingleEmail[] $emails
      * @param int $accept_latency
      * @param int $retry_count
      * @param int $status_wait_time
@@ -93,9 +102,9 @@ trait SmsClient
      *
      * @throws ParametersIsIncompleteException
      */
-    public function sendSmsMultiple(
+    public function sendEmailMultiple(
         int $sender,
-        array $messages,
+        array $emails,
         int $accept_latency = 24 * 60 * 60,
         int $retry_count = 3,
         int $status_wait_time = 60,
@@ -109,7 +118,7 @@ trait SmsClient
             throw new ParametersIsIncompleteException('due date must be have date format');
         $data = [
             'sender' => $sender,
-            'data' => $messages,
+            'data' => $emails,
             'accept_latency' => $accept_latency,
             'retry_count' => $retry_count,
             'status_wait_time' => $status_wait_time,
@@ -118,7 +127,7 @@ trait SmsClient
             'j_due_date' => $j_due_date
         ];
         $data = $this->filter($data);
-        $order = OrderObject::fromArray($this->httpHandler->sendSmsMultiple($data));
+        $order = OrderObject::fromArray($this->httpHandler->sendEmailMultiple($data));
         if ($return_array)
             return $order->toArray();
         return $order;

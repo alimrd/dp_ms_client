@@ -4,6 +4,7 @@ namespace Tatdev\DPMSClient\Clients;
 
 use Tatdev\DPMSClient\HttpHandlers\HttpHandler;
 use Tatdev\DPMSClient\Interfaces\iHttpClient;
+use Tatdev\DPMSClient\Traits\EmailClient;
 use Tatdev\DPMSClient\Traits\SmsClient;
 
 /**
@@ -42,4 +43,5 @@ class Client
     }
 
     use SmsClient;
+    use EmailClient;
 }
